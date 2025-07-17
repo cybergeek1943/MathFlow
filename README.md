@@ -13,7 +13,7 @@ pip install funkit
 ```  
 
 **Have Questions? Take a look at the Q&A:**   
-[Questions & Answers: Addressing Potential Concerns](docs/Q&A.md)
+[Questions & Answers: Addressing Potential Concerns](docs/QA.md)
 
 ## ✨ Key Features  
   
