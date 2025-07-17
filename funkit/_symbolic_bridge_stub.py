@@ -1,9 +1,10 @@
 # Import required names here
 from sympy import Expr
 
+# noinspection PyUnresolvedReferences,HttpUrlsUsage,PyIncorrectDocstring,PyPep8Naming,PyShadowingBuiltins,PyDefaultArgument
 class SympyModule:
     def collect_const(self, *vars, Numbers=True):
-        """A non-greedy collection of terms with similar number coefficients in
+        r"""A non-greedy collection of terms with similar number coefficients in
         an Add expr. If ``vars`` is given then only those constants will be
         targeted. Although any Number can also be targeted, if this is not
         desired set ``Numbers=False`` and no Float or Rational will be collected.
@@ -32,7 +33,7 @@ class SympyModule:
             Returns an expression with similar coefficient terms collected.
         """
     def collect_sqrt(self, evaluate=None):
-        """Return expr with terms having common square roots collected together.
+        r"""Return expr with terms having common square roots collected together.
         If ``evaluate`` is False a count indicating the number of sqrt-containing
         terms will be returned and, if non-zero, the terms of the Add will be
         returned, else the expression itself will be returned as a single term.
@@ -42,33 +43,39 @@ class SympyModule:
         Note: since I = sqrt(-1), it is collected, too.
         """
     def convert_rationals_to_floats(self, n=15, exponent=False, dkeys=False):
-        """Make all Rationals in expr Floats except those in exponents
+        r"""Make all Rationals in expr Floats except those in exponents
         (unless the exponents flag is set to True) and those in undefined
         functions. When processing dictionaries, do not modify the keys
         unless ``dkeys=True``.
         """
     def expand_complex(self, deep=True):
-        """Wrapper around expand that only uses the complex hint.  See the expand
+        r"""
+        Wrapper around expand that only uses the complex hint.  See the expand
         docstring for more information.
         """
     def expand_func(self, deep=True):
-        """Wrapper around expand that only uses the func hint.  See the expand
+        r"""
+        Wrapper around expand that only uses the func hint.  See the expand
         docstring for more information.
         """
     def expand_log(self, deep=True, force=False, factor=False):
-        """Wrapper around expand that only uses the log hint.  See the expand
+        r"""
+        Wrapper around expand that only uses the log hint.  See the expand
         docstring for more information.
         """
     def expand_mul(self, deep=True):
-        """Wrapper around expand that only uses the mul hint.  See the expand
+        r"""
+        Wrapper around expand that only uses the mul hint.  See the expand
         docstring for more information.
         """
     def expand_multinomial(self, deep=True):
-        """Wrapper around expand that only uses the multinomial hint.  See the expand
+        r"""
+        Wrapper around expand that only uses the multinomial hint.  See the expand
         docstring for more information.
         """
     def expand_power_base(self, deep=True, force=False):
-        """Wrapper around expand that only uses the power_base hint.
+        r"""
+        Wrapper around expand that only uses the power_base hint.
         
         A wrapper to expand(power_base=True) which separates a power with a base
         that is a Mul into a product of powers, without performing any other
@@ -82,20 +89,22 @@ class SympyModule:
         only happen if the base is non-negative or the exponent is an integer.
         """
     def expand_power_exp(self, deep=True):
-        """Wrapper around expand that only uses the power_exp hint.
+        r"""
+        Wrapper around expand that only uses the power_exp hint.
         
         See the expand docstring for more information.
         """
     def expand_trig(self, deep=True):
-        """Wrapper around expand that only uses the trig hint.  See the expand
+        r"""
+        Wrapper around expand that only uses the trig hint.  See the expand
         docstring for more information.
         """
     def factor_nc(self):
-        """Return the factored form of ``expr`` while handling non-commutative
+        r"""Return the factored form of ``expr`` while handling non-commutative
         expressions.
         """
     def factor_terms(self, radical=False, clear=False, fraction=False, sign=True) -> Expr:
-        """Remove common factors from terms in all arguments without
+        r"""Remove common factors from terms in all arguments without
         changing the underlying structure of the expr. No expansion or
         simplification (and no processing of non-commutatives) is performed.
         
@@ -120,7 +129,7 @@ class SympyModule:
             it will be factored out of the expression.
         """
     def gcd_terms(self, isprimitive=False, clear=True, fraction=True):
-        """Compute the GCD of ``terms`` and put them together.
+        r"""Compute the GCD of ``terms`` and put them together.
         
         Parameters
         ==========
@@ -144,13 +153,14 @@ class SympyModule:
             denominator.
         """
     def horner(self, *gens, **args):
-        """Rewrite a polynomial in Horner form.
+        r"""
+        Rewrite a polynomial in Horner form.
         
         Among other applications, evaluation of a polynomial at a point is optimal
         when it is applied using the Horner scheme ([1]).
         """
     def hypersimp(self, k):
-        """Given combinatorial term f(k) simplify its consecutive term ratio
+        r"""Given combinatorial term f(k) simplify its consecutive term ratio
         i.e. f(k+1)/f(k).  The input term can be composed of functions and
         integer sequences which have equivalent representation in terms
         of gamma special function.
@@ -177,11 +187,13 @@ class SympyModule:
         For more information on the implemented algorithm refer to:
         
         1. W. Koepf, Algorithms for m-fold Hypergeometric Summation,
-           Journal of Symbolic Computation (1995) 20, 399-417"""
+           Journal of Symbolic Computation (1995) 20, 399-417
+        """
     def is_sqrt(self):
-        """Return True if expr is a sqrt, otherwise False."""
+        r"""Return True if expr is a sqrt, otherwise False."""
     def logcombine(self, force=False):
-        """Takes logarithms and combines them using the following rules:
+        r"""
+        Takes logarithms and combines them using the following rules:
         
         - log(x) + log(y) == log(x*y) if both are positive
         - a*log(x) == log(x**a) if x is positive and a is real
@@ -193,13 +205,14 @@ class SympyModule:
         take place.
         """
     def nfloat(self, n=15, exponent=False, dkeys=False):
-        """Make all Rationals in expr Floats except those in exponents
+        r"""Make all Rationals in expr Floats except those in exponents
         (unless the exponents flag is set to True) and those in undefined
         functions. When processing dictionaries, do not modify the keys
         unless ``dkeys=True``.
         """
     def nsolve(self, *args, dict=False, **kwargs):
-        """Solve a nonlinear equation system numerically: ``nsolve(f, [args,] x0,
+        r"""
+        Solve a nonlinear equation system numerically: ``nsolve(f, [args,] x0,
         modules=['mpmath'], **kwargs)``.
         
         Explanation
@@ -225,7 +238,8 @@ class SympyModule:
         Overdetermined systems are supported.
         """
     def nthroot(self, n, max_len=4, prec=15):
-        """Compute a real nth-root of a sum of surds.
+        r"""
+        Compute a real nth-root of a sum of surds.
         
         Parameters
         ==========
@@ -242,7 +256,8 @@ class SympyModule:
         roots.
         """
     def powdenest(self, force=False, polar=False):
-        """Collect exponents on powers as assumptions allow.
+        r"""
+        Collect exponents on powers as assumptions allow.
         
         Explanation
         ===========
@@ -274,14 +289,17 @@ class SympyModule:
         obtained e.g. ``exp(3*(log(a) + 2*log(b)))`` - > ``a**3*b**6``.
         """
     def rad_rationalize(self, den):
-        """Rationalize ``num/den`` by removing square roots in the denominator;
+        r"""
+        Rationalize ``num/den`` by removing square roots in the denominator;
         num and den are sum of terms whose squares are positive rationals.
         """
     def rcollect(self, *vars):
-        """Recursively collect sums in an expression.
+        r"""
+        Recursively collect sums in an expression.
         """
     def separatevars(self, symbols=[], dict=False, force=False):
-        """Separates variables in an expression, if possible.  By
+        r"""
+        Separates variables in an expression, if possible.  By
         default, it separates with respect to all symbols in an
         expression and collects constant coefficients that are
         independent of symbols.
@@ -312,7 +330,8 @@ class SympyModule:
         count on the returned factors being factored.
         """
     def solve(self, *symbols, **flags):
-        """Algebraically solves equations and systems of equations.
+        r"""
+        Algebraically solves equations and systems of equations.
         
         Explanation
         ===========
@@ -326,15 +345,16 @@ class SympyModule:
             - systems implied by undetermined coefficients
         """
     def sqrt_depth(self) -> int:
-        """Return the maximum depth of any square root argument of p.
+        r"""Return the maximum depth of any square root argument of p.
         """
     def sqrtdenest(self, max_iter=3):
-        """Denests sqrts in an expression that contain other square roots
+        r"""Denests sqrts in an expression that contain other square roots
         if possible, otherwise returns the expr unchanged. This is based on the
         algorithms of [1].
         """
     def symmetrize(self, *gens, **args):
-        """Rewrite a polynomial in terms of elementary symmetric polynomials.
+        r"""
+        Rewrite a polynomial in terms of elementary symmetric polynomials.
         
         A symmetric polynomial is a multivariate polynomial that remains invariant
         under any variable permutation, i.e., if `f = f(x_1, x_2, \dots, x_n)`,

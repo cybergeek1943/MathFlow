@@ -6,10 +6,10 @@ from math import inf
 from typing import Union, Iterable, Optional, Callable
 from scipy.optimize import Bounds, OptimizeResult
 
-# noinspection PyUnresolvedReferences,HttpUrlsUsage,PyIncorrectDocstring,PyPep8Naming
+# noinspection PyUnresolvedReferences,HttpUrlsUsage,PyIncorrectDocstring,PyPep8Naming,PyShadowingBuiltins,PyDefaultArgument
 class ScipyModule:
     def basinhopping(self, x0, niter=100, T=1.0, stepsize=0.5, minimizer_kwargs=None, take_step=None, accept_test=None, callback=None, interval=50, disp=False, niter_success=None, rng=None, target_accept_rate=0.5, stepwise_factor=0.9):
-        """    
+        r"""    
         
         
         Find the global minimum of a function using the basin-hopping algorithm.
@@ -210,7 +210,7 @@ class ScipyModule:
         .. versionadded:: 0.12.0
         """
     def bisect(self, a, b, args=(), xtol=2e-12, rtol=np.float64(8.881784197001252e-16), maxiter=100, full_output=False, disp=True):
-        """
+        r"""
         Find root of a function within an interval using bisection.
         
         Basic bisection routine to find a root of the function `f` between the
@@ -259,7 +259,7 @@ class ScipyModule:
             ``r.converged`` is True if the routine converged.
         """
     def bracket_minimum(self, xm0, xl0=None, xr0=None, xmin=None, xmax=None, factor=None, args=(), maxiter=1000):
-        """Bracket the minimum of a unimodal, real-valued function of a real variable.
+        r"""Bracket the minimum of a unimodal, real-valued function of a real variable.
         
         For each element of the output of `f`, `bracket_minimum` seeks the scalar
         bracket points ``xl < xm < xr`` such that ``fl >= fm <= fr`` where one of the
@@ -372,7 +372,7 @@ class ScipyModule:
         scipy.optimize.elementwise.find_minimum
         """
     def bracket_root(self, xl0, xr0=None, xmin=None, xmax=None, factor=None, args=(), maxiter=1000):
-        """Bracket the root of a monotonic, real-valued function of a real variable.
+        r"""Bracket the root of a monotonic, real-valued function of a real variable.
         
         For each element of the output of `f`, `bracket_root` seeks the scalar
         bracket endpoints ``xl`` and ``xr`` such that ``sign(f(xl)) == -sign(f(xr))``
@@ -480,7 +480,7 @@ class ScipyModule:
         find_root
         """
     def brenth(self, a, b, args=(), xtol=2e-12, rtol=np.float64(8.881784197001252e-16), maxiter=100, full_output=False, disp=True):
-        """Find a root of a function in a bracketing interval using Brent's
+        r"""Find a root of a function in a bracketing interval using Brent's
         method with hyperbolic extrapolation.
         
         A variation on the classic Brent routine to find a root of the function f
@@ -552,7 +552,7 @@ class ScipyModule:
         fixed_point : scalar fixed-point finder
         """
     def brentq(self, a, b, args=(), xtol=2e-12, rtol=np.float64(8.881784197001252e-16), maxiter=100, full_output=False, disp=True):
-        """
+        r"""
         Find a root of a function in a bracketing interval using Brent's method.
         
         Uses the classic Brent's method to find a root of the function `f` on
@@ -633,7 +633,7 @@ class ScipyModule:
         `f` must be continuous.  f(a) and f(b) must have opposite signs.
         """
     def brute(self, ranges, args=(), Ns=20, full_output=0, finish=fmin, disp=False, workers=1):
-        """Minimize a function over a given range by brute force.
+        r"""Minimize a function over a given range by brute force.
         
         Uses the "brute force" method, i.e., computes the function's value
         at each point of a multidimensional grid of points, to find the global
@@ -757,7 +757,7 @@ class ScipyModule:
         `Ns` points from its low-value to its high-value, inclusive.
         """
     def cubature(self, a, b, rule='gk21', rtol=1e-08, atol=0, max_subdivisions=10000, args=(), workers=1, points=None):
-        """
+        r"""
         Adaptive cubature of multidimensional array-valued function.
         
         Given an arbitrary integration rule, this function returns an estimate of the
@@ -894,7 +894,7 @@ class ScipyModule:
         :math:`t \in (0, 1)`.
         """
     def curve_fit(self, xdata, ydata, p0=None, sigma=None, absolute_sigma=False, check_finite=None, bounds=(-inf, inf), method=None, jac=None, full_output=False, nan_policy=None, **kwargs):
-        """
+        r"""
         Use non-linear least squares to fit a function, f, to data.
         
         Assumes ``ydata = f(xdata, *params) + eps``.
@@ -1104,7 +1104,7 @@ class ScipyModule:
         the parameters.
         """
     def dblquad(self, a, b, gfun, hfun, args=(), epsabs=1.49e-08, epsrel=1.49e-08):
-        """
+        r"""
         Compute a double integral.
         
         Return the double (definite) integral of ``func(y, x)`` from ``x = a..b``
@@ -1180,7 +1180,7 @@ class ScipyModule:
             in ``QAGS`` is applied.
         """
     def derivative(self, x, args=(), tolerances=None, maxiter=10, order=8, initial_step=0.5, step_factor=2.0, step_direction=0, preserve_shape=False, callback=None):
-        """Evaluate the derivative of a elementwise, real scalar function numerically.
+        r"""Evaluate the derivative of a elementwise, real scalar function numerically.
         
         For each element of the output of `f`, `derivative` approximates the first
         derivative of `f` at the corresponding element of `x` using finite difference
@@ -1342,7 +1342,7 @@ class ScipyModule:
         improve convergence.
         """
     def differential_evolution(self, bounds, args=(), strategy='best1bin', maxiter=1000, popsize=15, tol=0.01, mutation=(0.5, 1), recombination=0.7, rng=None, callback=None, disp=False, polish=True, init='latinhypercube', atol=0, updating='immediate', workers=1, constraints=(), x0=None, integrality=None, vectorized=False):
-        """    
+        r"""    
         
         
         Finds the global minimum of a multivariate function.
@@ -1694,8 +1694,8 @@ class ScipyModule:
         
         .. versionadded:: 0.15.0
         """
-    def direct(self, bounds: Union[Iterable, scipy.optimize._constraints.Bounds], args: tuple = (), eps: float = 0.0001, maxfun: int | None = None, maxiter: int = 1000, locally_biased: bool = True, f_min: float = -inf, f_min_rtol: float = 0.0001, vol_tol: float = 1e-16, len_tol: float = 1e-06, callback: Optional[Callable[[numpy.ndarray[tuple[int], numpy.dtype[numpy.float64]]], object]] = None) -> OptimizeResult:
-        """
+    def direct(self, bounds: Union[Iterable, Bounds], args: tuple = (), eps: float = 0.0001, maxfun: int | None = None, maxiter: int = 1000, locally_biased: bool = True, f_min: float = -inf, f_min_rtol: float = 0.0001, vol_tol: float = 1e-16, len_tol: float = 1e-06, callback: Optional[Callable[[numpy.ndarray[tuple[int], numpy.dtype[numpy.float64]]], object]] = None) -> OptimizeResult:
+        r"""
         Finds the global minimum of a function using the
         DIRECT algorithm.
         
@@ -1809,7 +1809,7 @@ class ScipyModule:
         .. versionadded:: 1.9.0
         """
     def dual_annealing(self, bounds, args=(), maxiter=1000, minimizer_kwargs=None, initial_temp=5230.0, restart_temp_ratio=2e-05, visit=2.62, accept=-5.0, maxfun=10000000.0, rng=None, no_local_search=False, callback=None, x0=None):
-        """    
+        r"""    
         
         
         Find the global minimum of a function using Dual Annealing.
@@ -1971,7 +1971,7 @@ class ScipyModule:
         .. versionadded:: 1.2.0
         """
     def find_minimum(self, init, args=(), tolerances=None, maxiter=100, callback=None):
-        """Find the minimum of an unimodal, real-valued function of a real variable.
+        r"""Find the minimum of an unimodal, real-valued function of a real variable.
         
         For each element of the output of `f`, `find_minimum` seeks the scalar minimizer
         that minimizes the element. This function currently uses Chandrupatla's
@@ -2092,7 +2092,7 @@ class ScipyModule:
         number of the appropriate dtype.
         """
     def find_root(self, init, args=(), tolerances=None, maxiter=None, callback=None):
-        """Find the root of a monotonic, real-valued function of a real variable.
+        r"""Find the root of a monotonic, real-valued function of a real variable.
         
         For each element of the output of `f`, `find_root` seeks the scalar
         root that makes the element 0. This function currently uses Chandrupatla's
@@ -2221,7 +2221,7 @@ class ScipyModule:
         of the result ``dtype`` of function inputs and outputs.
         """
     def fixed_point(self, x0, args=(), xtol=1e-08, maxiter=500, method='del2'):
-        """
+        r"""
         Find a fixed point of the function.
         
         Given a function of one or more variables and a starting point, find a
@@ -2247,7 +2247,7 @@ class ScipyModule:
             accelerate the convergence.
         """
     def fixed_quad(self, a, b, args=(), n=5):
-        """
+        r"""
         Compute a definite integral using fixed-order Gaussian quadrature.
         
         Integrate `func` from `a` to `b` using Gaussian quadrature of
@@ -2285,7 +2285,7 @@ class ScipyModule:
         cumulative_trapezoid : cumulative integration for sampled data
         """
     def hessian(self, x, tolerances=None, maxiter=10, order=8, initial_step=0.5, step_factor=2.0):
-        """Evaluate the Hessian of a function numerically.
+        r"""Evaluate the Hessian of a function numerically.
         
         Parameters
         ----------
@@ -2399,7 +2399,7 @@ class ScipyModule:
         emitted otherwise.
         """
     def jacobian(self, x, tolerances=None, maxiter=10, order=8, initial_step=0.5, step_factor=2.0, step_direction=0):
-        """Evaluate the Jacobian of a function numerically.
+        r"""Evaluate the Jacobian of a function numerically.
         
         Parameters
         ----------
@@ -2534,7 +2534,7 @@ class ScipyModule:
         Then pass the wrapped callable ``f`` as the first argument of `jacobian`.
         """
     def least_squares(self, x0, jac='2-point', bounds=(-inf, inf), method='trf', ftol=1e-08, xtol=1e-08, gtol=1e-08, x_scale=1.0, loss='linear', f_scale=1.0, diff_step=None, tr_solver=None, tr_options=None, jac_sparsity=None, max_nfev=None, verbose=0, args=(), kwargs=None):
-        """Solve a nonlinear least-squares problem with bounds on the variables.
+        r"""Solve a nonlinear least-squares problem with bounds on the variables.
         
         Given the residuals f(x) (an m-D real function of n real
         variables) and the loss function rho(s) (a scalar function), `least_squares`
@@ -2851,7 +2851,7 @@ class ScipyModule:
         .. versionadded:: 0.17.0
         """
     def minimize(self, x0, args=(), method=None, jac=None, hess=None, hessp=None, bounds=None, constraints=(), tol=None, callback=None, options=None):
-        """Minimization of scalar function of one or more variables.
+        r"""Minimization of scalar function of one or more variables.
         
         Parameters
         ----------
@@ -3232,7 +3232,7 @@ class ScipyModule:
         the method.  You can find an example in the scipy.optimize tutorial.
         """
     def minimize_scalar(self, bracket=None, bounds=None, args=(), method=None, tol=None, options=None):
-        """Local minimization of scalar function of one variable.
+        r"""Local minimization of scalar function of one variable.
         
         Parameters
         ----------
@@ -3346,7 +3346,7 @@ class ScipyModule:
         .. versionadded:: 0.11.0
         """
     def newton(self, x0, fprime=None, args=(), tol=1.48e-08, maxiter=50, fprime2=None, x1=None, rtol=0.0, full_output=False, disp=True):
-        """
+        r"""
         Find a root of a real or complex function using the Newton-Raphson
         (or secant or Halley's) method.
         
@@ -3461,7 +3461,7 @@ class ScipyModule:
           Otherwise, a naive loop may perform as well or better than a vector.
         """
     def nquad(self, ranges, args=None, opts=None, full_output=False):
-        """
+        r"""
         Integration over multiple variables.
         
         Wraps `quad` to enable integration over multiple variables.
@@ -3622,7 +3622,7 @@ class ScipyModule:
             point :math:`x = c`.
         """
     def nsum(self, a, b, step=1, args=(), log=False, maxterms=1048576, tolerances=None):
-        """Evaluate a convergent finite or infinite series.
+        r"""Evaluate a convergent finite or infinite series.
         
         For finite `a` and `b`, this evaluates::
         
@@ -3770,7 +3770,7 @@ class ScipyModule:
         between pairs of adjacent terms, and adjust `step` accordingly. See Examples.
         """
     def qmc_quad(self, a, b, n_estimates=8, n_points=1024, qrng=None, log=False):
-        """
+        r"""
         Compute an integral in N-dimensions using Quasi-Monte Carlo quadrature.
         
         Parameters
@@ -3836,7 +3836,7 @@ class ScipyModule:
         increasing `n_estimates` tends to decrease the error estimate.
         """
     def quad(self, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=50, points=None, weight=None, wvar=None, wopts=None, maxp1=50, limlst=50, complex_func=False):
-        """
+        r"""
         Compute a definite integral.
         
         Integrate func from `a` to `b` (possibly infinite interval) using a
@@ -4165,7 +4165,7 @@ class ScipyModule:
         
         """
     def quad_vec(self, a, b, epsabs=1e-200, epsrel=1e-08, norm='2', cache_size=100000000.0, limit=10000, workers=1, points=None, quadrature=None, full_output=False, args=()):
-        """Adaptive integration of a vector-valued function.
+        r"""Adaptive integration of a vector-valued function.
         
         Parameters
         ----------
@@ -4262,7 +4262,7 @@ class ScipyModule:
         special cases.
         """
     def ridder(self, a, b, args=(), xtol=2e-12, rtol=np.float64(8.881784197001252e-16), maxiter=100, full_output=False, disp=True):
-        """
+        r"""
         Find a root of a function in an interval using Ridder's method.
         
         Parameters
@@ -4323,7 +4323,7 @@ class ScipyModule:
         order to be a bit more careful of tolerance.
         """
     def root(self, x0, args=(), method='hybr', jac=None, tol=None, callback=None, options=None):
-        """
+        r"""
         Find a root of a vector function.
         
         Parameters
@@ -4426,7 +4426,7 @@ class ScipyModule:
         .. versionadded:: 0.11.0
         """
     def root_scalar(self, args=(), method=None, bracket=None, fprime=None, fprime2=None, x0=None, x1=None, xtol=None, rtol=None, maxiter=None, options=None):
-        """
+        r"""
         Find a root of a scalar function.
         
         Parameters
@@ -4531,7 +4531,7 @@ class ScipyModule:
         +-----------------------------------------------+---+------+---------+----+----+--------+---------+------+------+---------+---------+
         """
     def shgo(self, bounds, args=(), constraints=None, n=100, iters=1, callback=None, minimizer_kwargs=None, options=None, sampling_method='simplicial', workers=1):
-        """
+        r"""
         Finds the global minimum of a function using SHG optimization.
         
         SHGO stands for "simplicial homology global optimization".
@@ -4790,7 +4790,7 @@ class ScipyModule:
         `scipy.stats.qmc`. Any other QMC method could be used.
         """
     def solve(self, args=(), method=None, bracket=None, fprime=None, fprime2=None, x0=None, x1=None, xtol=None, rtol=None, maxiter=None, options=None):
-        """
+        r"""
         Find a root of a scalar function.
         
         Parameters
@@ -4895,7 +4895,7 @@ class ScipyModule:
         +-----------------------------------------------+---+------+---------+----+----+--------+---------+------+------+---------+---------+
         """
     def tanhsinh(self, a, b, args=(), log=False, maxlevel=None, minlevel=2, atol=None, rtol=None, preserve_shape=False, callback=None):
-        """Evaluate a convergent integral numerically using tanh-sinh quadrature.
+        r"""Evaluate a convergent integral numerically using tanh-sinh quadrature.
         
         In practice, tanh-sinh quadrature achieves quadratic convergence for
         many integrands: the number of accurate *digits* scales roughly linearly
@@ -5046,7 +5046,7 @@ class ScipyModule:
         the function at the endpoints will be ignored.
         """
     def toms748(self, a, b, args=(), k=1, xtol=2e-12, rtol=np.float64(8.881784197001252e-16), maxiter=100, full_output=False, disp=True):
-        """
+        r"""
         Find a root using TOMS Algorithm 748 method.
         
         Implements the Algorithm 748 method of Alefeld, Potro and Shi to find a
@@ -5126,7 +5126,7 @@ class ScipyModule:
         usually appropriate.
         """
     def tplquad(self, a, b, gfun, hfun, qfun, rfun, args=(), epsabs=1.49e-08, epsrel=1.49e-08):
-        """
+        r"""
         Compute a triple (definite) integral.
         
         Return the triple integral of ``func(z, y, x)`` from ``x = a..b``,

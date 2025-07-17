@@ -3,7 +3,7 @@
 # noinspection PyUnresolvedReferences,HttpUrlsUsage,PyIncorrectDocstring,PyPep8Naming,PyShadowingBuiltins,PyDefaultArgument
 class SympyReprModule:
     def ccode(self, assign_to=None, standard='c99', **settings):
-        """Converts an expr to a string of c code
+        r"""Converts an expr to a string of c code
         
         Parameters
         ==========
@@ -46,9 +46,9 @@ class SympyReprModule:
             [default=True].
         """
     def cxxcode(self, assign_to=None, standard='c++11', **settings):
-        """C++ equivalent of :func:`~.ccode`. """
+        r"""C++ equivalent of :func:`~.ccode`. """
     def fcode(self, assign_to=None, **settings):
-        """Converts an expr to a string of fortran code
+        r"""Converts an expr to a string of fortran code
         
         Parameters
         ==========
@@ -94,7 +94,7 @@ class SympyReprModule:
             variables. [default=True]
         """
     def jscode(self, assign_to=None, **settings):
-        """Converts an expr to a string of javascript code
+        r"""Converts an expr to a string of javascript code
         
         Parameters
         ==========
@@ -126,7 +126,7 @@ class SympyReprModule:
             [default=True].
         """
     def julia_code(self, assign_to=None, **settings):
-        """Converts `expr` to a string of Julia code.
+        r"""Converts `expr` to a string of Julia code.
         
         Parameters
         ==========
@@ -161,7 +161,7 @@ class SympyReprModule:
             statements.  [default=True].
         """
     def latex(self, full_prec=False, fold_frac_powers=False, fold_func_brackets=False, fold_short_frac=None, inv_trig_style='abbreviated', itex=False, ln_notation=False, long_frac_ratio=None, mat_delim='[', mat_str=None, mode='plain', mul_symbol=None, order=None, symbol_names={}, root_notation=True, mat_symbol_style='plain', imaginary_unit='i', gothic_re_im=False, decimal_separator='period', perm_cyclic=True, parenthesize_super=True, min=None, max=None, diff_operator='d', adjoint_style='dagger', disable_split_super_sub=False):
-        """Convert the given expression to LaTeX string representation.
+        r"""Convert the given expression to LaTeX string representation.
         
         Parameters
         ==========
@@ -269,7 +269,7 @@ class SympyReprModule:
         8 \sqrt{2} \tau^{\frac{7}{2}}
         """
     def maple_code(self, assign_to=None, **settings):
-        """Converts ``expr`` to a string of Maple code.
+        r"""Converts ``expr`` to a string of Maple code.
         
         Parameters
         ==========
@@ -305,14 +305,14 @@ class SympyReprModule:
         
         """
     def mathematica_code(self, **settings):
-        """Converts an expr to a string of the Wolfram Mathematica code
+        r"""Converts an expr to a string of the Wolfram Mathematica code
         """
     def mathml(self, printer='content', order=None, encoding='utf-8', fold_frac_powers=False, fold_func_brackets=False, fold_short_frac=None, inv_trig_style='abbreviated', ln_notation=False, long_frac_ratio=None, mat_delim='[', mat_symbol_style='plain', mul_symbol=None, root_notation=True, symbol_names={}, mul_symbol_mathml_numbers='&#xB7;', disable_split_super_sub=False):
-        """Returns the MathML representation of expr. If printer is presentation
+        r"""Returns the MathML representation of expr. If printer is presentation
         then prints Presentation MathML else prints content MathML.
         """
     def octave_code(self, assign_to=None, **settings):
-        """Converts `expr` to a string of Octave (or Matlab) code.
+        r"""Converts `expr` to a string of Octave (or Matlab) code.
         
         The string uses a subset of the Octave language for Matlab compatibility.
         
@@ -349,13 +349,13 @@ class SympyReprModule:
             statements.  [default=True].
         """
     def pretty(self, order=None, full_prec='auto', use_unicode=None, wrap_line=True, num_columns=None, use_unicode_sqrt_char=True, root_notation=True, mat_symbol_style='plain', imaginary_unit='i', perm_cyclic=True):
-        """Returns a string containing the prettified form of expr.
+        r"""Returns a string containing the prettified form of expr.
         
         For information on keyword arguments see pretty_print function.
         
         """
     def pycode(self, **settings):
-        """Converts an expr to a string of Python code
+        r"""Converts an expr to a string of Python code
         
         Parameters
         ==========
@@ -370,10 +370,10 @@ class SympyReprModule:
             This parameter may be removed in the future.
         """
     def python(self, **settings):
-        """Return Python interpretation of passed expression
+        r"""Return Python interpretation of passed expression
         (can be passed to the exec() function without any modifications)"""
     def rcode(self, assign_to=None, **settings):
-        """Converts an expr to a string of r code
+        r"""Converts an expr to a string of r code
         
         Parameters
         ==========
@@ -407,7 +407,7 @@ class SympyReprModule:
             [default=True].
         """
     def rust_code(self, assign_to=None, **settings):
-        """Converts an expr to a string of Rust code
+        r"""Converts an expr to a string of Rust code
         
         Parameters
         ==========
@@ -445,7 +445,7 @@ class SympyReprModule:
             [default=True].
         """
     def smtlib_code(self, auto_assert=True, auto_declare=True, precision=None, symbol_table=None, known_types=None, known_constants=None, known_functions=None, prefix_expressions=None, suffix_expressions=None, log_warn=None):
-        """Converts ``expr`` to a string of smtlib code.
+        r"""Converts ``expr`` to a string of smtlib code.
         
         Parameters
         ==========
@@ -482,7 +482,7 @@ class SympyReprModule:
             Soundness is a core value in SMT solving, so it is good to log all assumptions made.
         """
     def tree(self, assumptions=True):
-        """
+        r"""
         Returns a tree representation of "node" as a string.
         
         It uses print_node() together with pprint_nodes() on node.args recursively.

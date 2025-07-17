@@ -60,7 +60,7 @@ def create_function_string(name: str, params: Sequence[str] | str = (), return_a
     tab_2 = 2 * tab
     s: str = f'{tab}def {name}({', '.join(params)})'
     s += f' -> {return_annotation}:' if return_annotation else ':'
-    s += f' ...' if not docstring else f'\n{tab_2}"""{docstring.replace('\n', f'\n{tab_2}')}"""'
+    s += f' ...' if not docstring else f'\n{tab_2}r"""{docstring.replace('\n', f'\n{tab_2}')}"""'
     return s
 
 
