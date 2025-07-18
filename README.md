@@ -93,7 +93,7 @@ graph BT
     %% Arrows still point child → parent
     BaseExpression -.-> sympy.Expr
     BaseExpression -.-> sympy.Poly
-    Expression --> |Numerical Proxy| n
+    Expression --> n
     n --> |lambdified numerical representation| A["f(x)"]
     n -.-> scipy.numerical_methods
     Expression --> BaseExpression
