@@ -3,10 +3,10 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "funkit"
+name = "mathflow"
 version = "0.1.0"
 description = "A Pythonic Interface for Symbolic and Numerical Mathematics"
-license = {text = "MIT"}
+license = 'MIT'
 authors = [{name = "Isaac Wolford", email = "isaacmwolford@gmail.com"}]
 requires-python = ">=3.11"
 dependencies = [

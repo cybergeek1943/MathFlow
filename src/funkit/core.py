@@ -239,7 +239,7 @@ class BaseExpression(_BaseExpression):
         return self.expr.__repr__()
 
 
-def _handle_args_with_funkit_objects(args, kwargs) -> tuple[list, dict]:
+def _handle_args_with_mathflow_objects(args, kwargs) -> tuple[list, dict]:
     out_args = [arg.expr if isinstance(arg, BaseExpression) else arg for arg in args]
     for k, v in kwargs.items():
         if isinstance(v, BaseExpression):
@@ -250,7 +250,7 @@ def _handle_args_with_funkit_objects(args, kwargs) -> tuple[list, dict]:
 def _delegate_dunder_method(name: str) -> Callable:
     """This is a function that helps delegate dunder methods to BaseExpression.expr object."""
     def dunder_method(self: BaseExpression, *args, **kwargs) -> Any:
-        args, kwargs = _handle_args_with_funkit_objects(args, kwargs)  # this enables operation between types BaseExpression and BaseExpression.
+        args, kwargs = _handle_args_with_mathflow_objects(args, kwargs)  # this enables operation between types BaseExpression and BaseExpression.
         result: Any = getattr(self.expr, name)(*args, **kwargs)
         if self.operative_closure and isinstance(result, SympyExpr):
             return self._clone_self(new_expr=result)

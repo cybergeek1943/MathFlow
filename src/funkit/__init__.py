@@ -1,13 +1,13 @@
 """
-FunKit - A Pythonic Interface for Symbolic and Numerical Mathematics
+MathFlow - A Pythonic Interface for Symbolic and Numerical Mathematics
 =====================================================================
 
-FunKit provides an object-oriented wrapper around SymPy with seamless integration of numerical 
+MathFlow provides an object-oriented wrapper around SymPy with seamless integration of numerical
 computations, making symbolic mathematics more intuitive and powerful for Python developers.
 
 Overview
 --------
-FunKit bridges the gap between symbolic mathematics (SymPy) and numerical computations (NumPy/SciPy),
+MathFlow bridges the gap between symbolic mathematics (SymPy) and numerical computations (NumPy/SciPy),
 offering a unified interface that maintains mathematical rigor while providing practical tools for
 real-world problems. It extends SymPy's capabilities with features like operative closure, mutability
 control, and automatic type conversions between different mathematical representations.
@@ -55,7 +55,7 @@ Function
 
 Design Philosophy
 -----------------
-FunKit follows several key principles:
+MathFlow follows several key principles:
 
 1. **Intuitive API**: Mathematical operations should feel natural in Python while maintaining
    mathematical correctness.

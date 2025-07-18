@@ -1,12 +1,12 @@
-# FunKit Q&A: Addressing Potential Concerns
+# MathFlow Q&A: Addressing Potential Concerns
 
 ### Performance & Overhead
 
 **Q: Doesn't adding an abstraction layer introduce significant performance overhead compared to using SymPy/NumPy directly?**
 **A:** The overhead is minimal - just one or two `getattr()` calls, which are negligible compared to the actual mathematical computations. Python's attribute lookup is highly optimized, and mathematical operations like integration, differentiation, or root-finding completely dominate any method dispatch overhead.
-In fact, FunKit often provides performance _improvements_ through cached lambdified expressions (eliminating repeated compilation) and automatic algorithm selection (like Horner's method for polynomial evaluation).
+In fact, MathFlow often provides performance _improvements_ through cached lambdified expressions (eliminating repeated compilation) and automatic algorithm selection (like Horner's method for polynomial evaluation).
 
-**Q: How does FunKit's performance compare to direct SymPy usage in practice?**
+**Q: How does MathFlow's performance compare to direct SymPy usage in practice?**
 **A:** For typical mathematical workflows, performance is equivalent or better. The `.n` attribute provides direct access to optimized numerical routines without manual lambdification overhead. Any microsecond differences in method dispatch are irrelevant when you're computing integrals or solving equations.
 
 **Q: How does automatic type conversion between Poly and Expr work? Could this cause unexpected behavior?**
@@ -15,21 +15,21 @@ In fact, FunKit often provides performance _improvements_ through cached lambdif
 ### Practical Usage
 
 **Q: How stable is the API?**
-**A:** The core API is designed for stability, following established patterns from libraries like `requests`. The mathematical operations and core classes are unlikely to change significantly. Also, because FunKit has been designed using metaprogramming techniques, any changes to SymPy will naturally present themselves in FunKit.
+**A:** The core API is designed for stability, following established patterns from libraries like `requests`. The mathematical operations and core classes are unlikely to change significantly. Also, because MathFlow has been designed using metaprogramming techniques, any changes to SymPy will naturally present themselves in MathFlow.
 
 **Q: What about debugging and error messages?**
-**A:** Since FunKit is built on SymPy, you get the same detailed error messages and debugging capabilities. The abstraction layer preserves the underlying mathematical error handling.
+**A:** Since MathFlow is built on SymPy, you get the same detailed error messages and debugging capabilities. The abstraction layer preserves the underlying mathematical error handling.
 
 ### Ecosystem & Adoption
 
 **Q: Why not just use SymPy directly? What's the compelling advantage?**
-**A:** FunKit eliminates the friction of switching between symbolic and numerical computing. With SymPy, you constantly write boilerplate code for lambdification, handle type conversions, and manage separate workflows. FunKit provides a unified interface where every symbolic expression has numerical methods available via the `.n` attribute. It also adds additional convenience utilities such as the `.n.all_roots()`, `.n.all_poly_roots()`, `.nsolve_all()`, and more.
+**A:** MathFlow eliminates the friction of switching between symbolic and numerical computing. With SymPy, you constantly write boilerplate code for lambdification, handle type conversions, and manage separate workflows. MathFlow provides a unified interface where every symbolic expression has numerical methods available via the `.n` attribute. It also adds additional convenience utilities such as the `.n.all_roots()`, `.n.all_poly_roots()`, `.nsolve_all()`, and more.
 
 **Q: Is this just another "wrapper library" that adds complexity?**
-**A:** No - FunKit is fully backward compatible with SymPy. You can seamlessly mix FunKit and SymPy objects in the same script. It's purpose is to add a better and more pythonic interface to existing functionality rather than replacing it. **It is intended to be used alongside SymPy**.
+**A:** No - MathFlow is fully backward compatible with SymPy. You can seamlessly mix MathFlow and SymPy objects in the same script. It's purpose is to add a better and more pythonic interface to existing functionality rather than replacing it. **It is intended to be used alongside SymPy**.
 
 **Q: How does this compare to existing solutions like SymEngine or SageMath?**
-**A:** SymEngine focuses on computational speed for symbolic operations. FunKit focuses on workflow ergonomics and the symbolic-numerical interface. They solve different problems and could even be used together. FunKit has also been developed to be minimal and lightweight (~0.5 MB itself, and ~100 MB including dependencies) with a focus toward the analysis of functions and expressions, unlike SageMath (2 GB) or similar libraries which provide comprehensive mathematical tools.
+**A:** SymEngine focuses on computational speed for symbolic operations. MathFlow focuses on workflow ergonomics and the symbolic-numerical interface. They solve different problems and could even be used together. MathFlow has also been developed to be minimal and lightweight (~0.5 MB itself, and ~100 MB including dependencies) with a focus toward the analysis of functions and expressions, unlike SageMath (2 GB) or similar libraries which provide comprehensive mathematical tools.
 
 ### Design Philosophy
 
@@ -43,7 +43,7 @@ In fact, FunKit often provides performance _improvements_ through cached lambdif
 These aren't random features - they're solving real workflow problems.
 
 **Q: Is there a learning curve for existing SymPy users?**
-**A:** Minimal. All existing SymPy knowledge transfers directly. FunKit adds convenience features without changing fundamental concepts. Most methods are directly inherited from SymPy's Expr and Poly classes. You can gradually adopt FunKit features while keeping existing SymPy workflows.
+**A:** Minimal. All existing SymPy knowledge transfers directly. MathFlow adds convenience features without changing fundamental concepts. Most methods are directly inherited from SymPy's Expr and Poly classes. You can gradually adopt MathFlow features while keeping existing SymPy workflows.
 
 
 

@@ -1,14 +1,14 @@
-# FunKit 🧮
+# MathFlow 🧮
 **A Pythonic Interface for Symbolic and Numerical Mathematics**
 
-FunKit bridges the gap between symbolic mathematics (SymPy) and numerical computations (NumPy/SciPy), offering a unified interface that maintains mathematical rigor while providing practical tools for real-world problems.  
+MathFlow bridges the gap between symbolic mathematics (SymPy) and numerical computations (NumPy/SciPy), offering a unified interface that maintains mathematical rigor while providing practical tools for real-world problems.  
   
 ![Static Badge](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 
 **Ready to revolutionize your mathematical computing workflow?**
 ```bash
-pip install funkit
+pip install mathflow
 ```
 
 **Have Questions? Take a look at the Q&A:**
@@ -23,14 +23,14 @@ pip install funkit
 - **📡 Signal System**: Qt-like signals for tracking expression mutations and clones, enabling reactive programming  
 - **🔄 Automatic Type Conversions**: Seamlessly and automatically converts between internal Poly and Expr representations based on context
 - **📦 Lightweight**: ~0.5 MB itself, ~100 MB including dependencies
-- **🧩 Fully backward compatible**: Seamlessly integrate SymPy and FunKit in the same script. All methods that work on SymPy Expr or Poly objects work on FunKit objects
+- **🧩 Fully backward compatible**: Seamlessly integrate SymPy and MathFlow in the same script. All methods that work on SymPy Expr or Poly objects work on MathFlow objects
 - **🔍 Exploratory**: Full IDE support, enabling easy tool finding and minimizing the learning curve.
 
 
 ## 🚀 Quick Start
 
 ```python
-from funkit import Expression, Polynomial, Rational
+from mathflow import Expression, Polynomial, Rational
 
 # Create expressions naturally
 f = Expression("2x^2 + 3x + \frac{1}{2}")  # latex is automatically parsed
@@ -60,7 +60,7 @@ print(f.print.ccode())    # c code output
 
 ## 🎯 Numerical Computing
 
-FunKit excels at bridging symbolic and numerical mathematics:  
+MathFlow excels at bridging symbolic and numerical mathematics:  
 ```python
 f = Expression("x^3 - 2x^2 + x - 1")
 
@@ -269,7 +269,7 @@ Step 9. `h` may be substituted for the original (x-c), and then expanded. `c` is
 
 ## 🏗️ Design Philosophy  
   
-FunKit follows several key principles:
+MathFlow follows several key principles:
 
 1. **Intuitive API**: Mathematical operations should feel natural in Python, providing an "exploratory" experience
 2. **Performance**: Automatic optimizations (Horner's method, efficient algorithms, automatic numerical computing when needed)  
