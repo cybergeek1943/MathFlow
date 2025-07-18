@@ -82,6 +82,8 @@ minimum = f.n.minimize(bounds=[(-2, 2)])
 ```mermaid
 graph BT
     %% Visual hierarchy with correct arrow semantics
+    sympy.Expr
+    sympy.Poly
     BaseExpression
     Expression
     Polynomial
@@ -89,11 +91,20 @@ graph BT
     Function
     
     %% Arrows still point child → parent
+    BaseExpression -.-> sympy.Expr
+    BaseExpression -.-> sympy.Poly
+    Expression --> |Numerical Proxy| n
+    n --> |lambdified numerical representation| A["f(x)"]
+    n -.-> scipy.numerical_methods
     Expression --> BaseExpression
     Polynomial --> Expression
     Rational --> Expression
     Function --> |Only an Alias| Expression
 ```
+> [!NOTE] Diagram Notes
+> - Dotted arrows mean "proxy to".
+> - Additional methods are not shown, only core structure.
+
 
 ### Expression
 The primary class for general symbolic expressions with numerical and printing capabilities.
@@ -156,7 +167,7 @@ f = Expression("x^2")
 g = f + 1  # f unchanged, g is new Expression object
 
 # Mutable Mode (f is modified in-place)
-f = Expression("(x-1)x^2", mutable=True)
+f = Expression("(x-1)^2", mutable=True)
 f += 1
 f.expand()
 ```
@@ -319,3 +330,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Built on the excellent [SymPy](https://www.sympy.org/) symbolic mathematics library  
 - Numerical computing powered by [NumPy](https://numpy.org/) and [SciPy](https://scipy.org/)  
 - High-precision arithmetic via [mpmath](http://mpmath.org/)  
+
+[^1]: 
