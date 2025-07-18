@@ -96,5 +96,5 @@ Useful Sympy Functions
 - x1, x2 = symbols('x1 x2')
 - Basic.free_symbols  # property gives us the free symbols of an expression
 """
-from core import Expression, Polynomial, Rational, Function
+from mathflow.core import Expression, Polynomial, Rational, Function
 from sympy import abc

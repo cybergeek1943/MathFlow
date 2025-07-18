@@ -14,7 +14,7 @@ pip install mathflow
 **Have Questions? Take a look at the Q&A:**
 [Questions & Answers: Addressing Potential Concerns](docs/QA.md)
 
-## ✨ Key Features  
+## ✨ Key Features
   
 - **🔒 Operative Closure**: Mathematical operations return new Expression objects by default, maintaining functional programming principles  
 - **⚡ Mutability Control**: Choose between immutable (default) and mutable expressions for different workflows  
