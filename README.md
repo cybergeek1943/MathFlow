@@ -23,7 +23,7 @@ pip install funkit
 - **🎨 Enhanced Printing**: Flexible output formatting through the `.print` attribute (LaTeX, pretty printing, code generation)  
 - **📡 Signal System**: Qt-like signals for tracking expression mutations and clones, enabling reactive programming  
 - **🔄 Automatic Type Conversions**: Seamlessly and automatically converts between internal Poly and Expr representations based on context
-- 📦 Lightweight**: ~0.5 MB itself, ~100 MB including dependencies
+- **📦 Lightweight**: ~0.5 MB itself, ~100 MB including dependencies
 - **🧩 Fully backward compatible**: Seamlessly integrate SymPy and FunKit in the same script. All methods that work on SymPy Expr or Poly objects work on FunKit objects
 - **🔍 Exploratory**: Full IDE support, enabling easy tool finding and minimizing the learning curve.
 
