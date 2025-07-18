@@ -1,6 +1,5 @@
 # FunKit 🧮
 **A Pythonic Interface for Symbolic and Numerical Mathematics**
-"Like `requests` for mathematical computing - making complex math feel simple."
 
 FunKit bridges the gap between symbolic mathematics (SymPy) and numerical computations (NumPy/SciPy), offering a unified interface that maintains mathematical rigor while providing practical tools for real-world problems.  
   
