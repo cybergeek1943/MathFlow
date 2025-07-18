@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "funkit"
+version = "0.1.0"
+description = "A Pythonic Interface for Symbolic and Numerical Mathematics"
+license = {text = "MIT"}
+authors = [{name = "Isaac Wolford", email = "isaacmwolford@gmail.com"}]
+requires-python = ">=3.11"
+dependencies = [
+    "sympy",
+    "scipy",
+    "tabulate",
+]
+
+[project.urls]
+Homepage = "https://github.com/cybergeek1943/funkit/"
+Repository = "https://github.com/cybergeek1943/funkit/"

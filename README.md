@@ -3,15 +3,15 @@
 
 FunKit bridges the gap between symbolic mathematics (SymPy) and numerical computations (NumPy/SciPy), offering a unified interface that maintains mathematical rigor while providing practical tools for real-world problems.  
   
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)  
+![Static Badge](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 
-**Ready to revolutionize your mathematical computing workflow?**   
-```bash  
+**Ready to revolutionize your mathematical computing workflow?**
+```bash
 pip install funkit
-```  
+```
 
-**Have Questions? Take a look at the Q&A:**   
+**Have Questions? Take a look at the Q&A:**
 [Questions & Answers: Addressing Potential Concerns](docs/QA.md)
 
 ## ✨ Key Features  
@@ -45,24 +45,24 @@ result = f(2.5)  # Numerically evaluate at x = 2.5
 
 # Use the .n attribute to access fast numerical methods
 numerical_roots = f.n.all_roots()
-# or call f's n-prefixed methods directly to use variable precision numerical methods
-roots = f.nsolve_all()
+# Call f's n-prefixed methods to use variable precision numerical methods
+precise_roots = f.nsolve_all(prec=50)  # 50 digits of accuracy
 
-# Beautiful printing options
-f.print()  # quick and easy printing
+# quick and easy printing
+f.print()
 f.print('latex')
 f.print('mathematica_code')
 # or
 print(f.print.latex())    # LaTeX output
-print(f.print.ccode())    # Pretty ASCII art
+print(f.print.ccode())    # c code output
 ```  
 
 
-## 🎯 Numerical Computing  
+## 🎯 Numerical Computing
 
 FunKit excels at bridging symbolic and numerical mathematics:  
 ```python
-f = Expression("x^3 - 2*x^2 + x - 1")
+f = Expression("x^3 - 2x^2 + x - 1")
 
 # Root finding
 all_roots = f.n.all_roots(bounds=(-5, 5))
@@ -105,13 +105,13 @@ expr = Expression("2x^2 + ln(|x-1|)")
 from sympy import sin, cos
 expr = Expression(sin(x) + cos(x))
 
-# Numerical methods via .n attribute
-roots = expr.n.all_roots(bounds=(-10, 10))
-integral = expr.n.quad(0, 1)  # Numerical integration
-
 # Symbolic operations
 derivative = expr.diff(x)
 expanded = expr.expand()
+
+# Numerical methods via .n attribute
+roots = expr.n.all_roots(bounds=(-10, 10))
+integral = expr.n.quad(0, 1)  # Numerical integration
 ```
 
 
