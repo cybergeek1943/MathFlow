@@ -150,30 +150,30 @@ pf = rational.partial_fractions(x)
 ## 🔧 Advanced Features
 ### Mutability Control  
   
-```python  
+```python
 # Immutable (default)
-f = Expression("x^2")  
-g = f + 1  # f unchanged, g is new Expression object  
-  
+f = Expression("x^2")
+g = f + 1  # f unchanged, g is new Expression object
+
 # Mutable Mode (f is modified in-place)
-f = Expression("x^2", mutable=True)  
+f = Expression("(x-1)x^2", mutable=True)
 f += 1
-f.diff()
-```  
+f.expand()
+```
 
 
 ### Flexible String Parsing  
   
-```python  
+```python
 # Natural mathematical notation
-expr = Expression("2x^2 + ln(|x-1|)")   
+expr = Expression("2x^2 + ln(|x-1|)")
 
 # LaTeX input support
-expr = Expression(r"\frac{x^2+1}{x-1}")  
+expr = Expression(r"\frac{x^2+1}{x-1}")
 
-# Implicit multiplication  
+# Implicit multiplication
 expr = Expression("2x sin(x)")
-```  
+```
 
 
 ### Signal System for Reactive Programming  
@@ -183,7 +183,8 @@ def on_change(expr):  # runs whenever an operation changes f
     print(f"Expression changed to: {expr}")  
 f = Expression("x^2")  
 f.on_self_mutated.connect(on_change)  
-f.on_self_cloned.connect(on_change)  
+f.on_self_cloned.connect(on_change)
+f += 1  # on_change() is called
 ```  
 
 
