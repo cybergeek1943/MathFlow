@@ -101,9 +101,9 @@ graph BT
     Rational --> Expression
     Function --> |Only an Alias| Expression
 ```
-> [!NOTE] Diagram Notes
+> Diagram Notes
 > - Dotted arrows mean "proxy to".
-> - Additional methods are not shown, only core structure.
+> - Additional methods are not shown, only the core structure.
 
 
 ### Expression
