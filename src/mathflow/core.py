@@ -8,19 +8,18 @@ from sympy import Basic, Expr, Poly, Symbol, Number, Mul, Add
 # Import sympy functions
 from sympy import expand_mul, lambdify, horner, sympify, nsolve
 
-
 # Import specific variables/symbols
 from sympy.abc import x
 
 # Import bridges
-import _repr_bridge_module
-import _numerical_bridge_module
-import _symbolic_bridge_module
+from mathflow import _repr_bridge_module
+from mathflow import _numerical_bridge_module
+from mathflow import _symbolic_bridge_module
 
 # Import custom functionality
-import custom_numerical_funcs as cnf
-import custom_pade_implementation as cpi
-from parser import parse_expression_str
+from mathflow import custom_numerical_funcs as cnf
+from mathflow import custom_pade_implementation as cpi
+from mathflow.parser import parse_expression_str
 
 # Import helper functions
 from copy import copy, deepcopy
@@ -77,7 +76,7 @@ class Signal:
 
 # Base Classes
 if TYPE_CHECKING:  # Useful for the IDE or Type checkers to see
-    from _symbolic_bridge_stub import SympyModule
+    from mathflow._symbolic_bridge_stub import SympyModule
     class _BaseExpression(Expr, Poly, SympyModule):
         pass  # If we want to customize how one of the methods of Expr, Poly, or BridgeClass look, we can override it here.
 else:
@@ -347,7 +346,7 @@ _setup_BaseExpression_dunder_methods()
 
 # ================================ Full Implementation ================================
 if TYPE_CHECKING:  # Useful for the IDE or Type checkers to see
-    from _repr_bridge_stub import SympyReprModule
+    from mathflow._repr_bridge_stub import SympyReprModule
     _BasePrintProxy = SympyReprModule
 else:
     _BasePrintProxy = object
@@ -396,7 +395,7 @@ class PrintProxy(_BasePrintProxy):
 
 
 if TYPE_CHECKING:  # Useful for the IDE or Type checkers to see
-    from _numerical_bridge_stub import ScipyModule
+    from mathflow._numerical_bridge_stub import ScipyModule
     _BaseNumericalProxy = ScipyModule
 else:
     _BaseNumericalProxy = object
