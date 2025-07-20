@@ -1,4 +1,4 @@
-<img width="615" height="320" alt="social-preview" src="https://github.com/user-attachments/assets/ae226adf-1b32-4efc-941c-f69c346f8315" />
+<img width="1278" height="342" alt="Wide@0 8x" src="https://github.com/user-attachments/assets/cc90652f-ff4d-4840-a43f-8cbb6b0fca83" />
 
 # MathFlow 🧮
 **A Pythonic Interface for Symbolic and Numerical Mathematics**
