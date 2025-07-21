@@ -1,3 +1,5 @@
+<img width="1278" height="342" alt="logo" src="https://github.com/user-attachments/assets/cc90652f-ff4d-4840-a43f-8cbb6b0fca83" />
+
 # MathFlow 🧮
 **A Pythonic Interface for Symbolic and Numerical Mathematics**
 
