@@ -45,28 +45,28 @@ class DefaultArgs:
 
 class Signal:
     """Implements a QT signal-like system using traditional callbacks."""
-    __slots__ = '__callables', 'callables_count', 'disabled'
+    __slots__ = 'callables', 'callables_count', 'disabled'
     def __init__(self) -> None:
-        self.__callables: list[Callable] = []
+        self.callables: list[Callable] = []
         self.callables_count: int = 0
         self.disabled: bool = True
 
     def __deepcopy__(self, memo) -> 'Signal':  # implement this so that cloning works in the BaseExpression
         n: Signal = copy(self)
-        n.__callables = self.__callables.copy()
+        n.callables = self.callables.copy()
         return n
 
     def emit(self, *args, **kwargs) -> None:
         if self.disabled: return
-        for c in self.__callables: c(*args, **kwargs)
+        for c in self.callables: c(*args, **kwargs)
 
     def connect(self, func: Callable) -> None:
-        if func in self.__callables: return
-        self.__callables.append(func)
+        if func in self.callables: return
+        self.callables.append(func)
         self.__increment_callables_count__(1)
 
     def disconnect(self, func: Callable) -> None:
-        self.__callables.remove(func)
+        self.callables.remove(func)
         self.__increment_callables_count__(-1)
 
     def __increment_callables_count__(self, n: int) -> None:
@@ -132,7 +132,7 @@ class BaseExpression(_BaseExpression):
         self.auto_handle_poly_switching: bool = auto_handle_poly_switching
 
         # Internal Representation
-        self.expr: Union[Expr, Poly] | Any = None  # self.expr strongly prefers to be of type Union[Expr, Poly].
+        self.expr: SympyExpr | Any = ...  # self.expr strongly prefers to be of type SympyExpr = Union[Expr, Poly].
         self.set_expr(expr, **kwargs)
 
         # Signals
@@ -169,14 +169,14 @@ class BaseExpression(_BaseExpression):
         try:
             attr: Any = getattr(self.expr, name)
         except:  # auto switch between Poly and Expr depending on context of `name`
-            if hasattr(Poly, name) and isinstance(self.expr, Expr):
-                self.expr: Poly = self.expr.as_poly()
-                attr: Any = getattr(self.expr, name)  # we could do a recursive call instead, but that could result in recursion errors in the event of unsuccessful conversion.
-            elif self.expr.is_Poly and hasattr(Expr, name):
-                self.expr: Expr = self.expr.as_expr()
-                attr: Any = getattr(self.expr, name)
-            else:
-                raise
+            if self.auto_handle_poly_switching:
+                if hasattr(Poly, name) and isinstance(self.expr, Expr):
+                    self.expr: Poly = self.expr.as_poly()
+                    attr: Any = getattr(self.expr, name)  # we could do a recursive call instead, but that could result in recursion errors in the event of unsuccessful conversion.
+                elif self.expr.is_Poly and hasattr(Expr, name):
+                    self.expr: Expr = self.expr.as_expr()
+                    attr: Any = getattr(self.expr, name)
+            raise
 
         if self.operative_closure and callable(attr):
             def wrapper(*args, **kwargs) -> Any:
@@ -512,7 +512,7 @@ class Expression(BaseExpression):
         self.on_self_cloned.connect(Expression.__sync_expr)
 
     @staticmethod
-    def __sync_expr(self: 'Expression'):  # This is a static function so that when Expression is cloned, the signals are still directed to the right method (the cloned self is emitted as an arg).
+    def __sync_expr(self: 'Expression'):  # This is a static function so that when Expression is cloned, the signals are still directed to the right method in memory (the cloned self is emitted as an arg).
         self.print.expr = self.expr
         self.n.ref = self
         self.n._f = None
@@ -609,18 +609,18 @@ class Expression(BaseExpression):
 
     # ======================== Factory Methods ========================
     @classmethod
-    def from_coeffs(cls, coeffs: Sequence[Number], var: Symbol = x, ascending: bool = True) -> 'Expression':
+    def from_coeffs(cls, coeffs: Sequence[Number], var: Symbol = x, ascending: bool = True, **kwargs) -> 'Expression':
         if not coeffs:
             raise ValueError('At least one coeff must be provided')
         if not ascending:
             coeffs = coeffs[::-1]  # Reverse for highest-first
-        return cls(Add(*[c*var**i for i, c in enumerate(coeffs)]))
+        return cls(Add(*[c*var**i for i, c in enumerate(coeffs)]), **kwargs)
 
     @classmethod
-    def from_roots(cls, roots: Sequence[Number], var: Symbol = x) -> 'Expression':
+    def from_roots(cls, roots: Sequence[Number], var: Symbol = x, **kwargs) -> 'Expression':
         if not roots:
             raise ValueError('At least one root must be provided')
-        return cls(expand_mul(Mul(*[var - r for r in roots])))
+        return cls(expand_mul(Mul(*[var - r for r in roots])), **kwargs)
 
 
 class Polynomial(Expression):
@@ -655,30 +655,42 @@ class Polynomial(Expression):
 class Rational(Expression):
     def __init__(self, expr: Union[SympyExpr, 'BaseExpression'] | str | Any = None, **kwargs) -> None:
         super().__init__(expr, **kwargs)
-        self.p, self.q = self.expr.as_numer_denom()
+        self._p, self._q = self.expr.as_numer_denom()
         self.on_self_mutated.connect(self.__sync_expr)
         self.on_self_cloned.connect(self.__sync_expr)
 
     @staticmethod
-    def __sync_expr(self: 'Rational'):
-        self.p, self.q = self.expr.as_numer_denom()
+    def __sync_expr(self: 'Rational'):  # is not actually overriding parent method because this is static
+        self._p, self._q = self.expr.as_numer_denom()
 
     @property
     def numerator(self) -> Expression | SympyExpr:
-        return Expression(self.p) if self.operative_closure else self.p
+        return Expression(self._p) if self.operative_closure else self._p
 
     @property
     def denominator(self) -> Expression | SympyExpr:
-        return Expression(self.q) if self.operative_closure else self.q
+        return Expression(self._q) if self.operative_closure else self._q
+
+    @numerator.setter
+    def numerator(self, value: SympyExpr | Expression) -> None:
+        if isinstance(value, Expression):
+            value: SympyExpr = value.expr
+        self.set_expr(value / self._q)  # set_expr() automatically emits the mutation signal
+
+    @denominator.setter
+    def denominator(self, value: SympyExpr | Expression) -> None:
+        if isinstance(value, Expression):
+            value: SympyExpr = value.expr
+        self.set_expr(self._p / value)  # set_expr() automatically emits the mutation signal
 
     # noinspection PyMethodOverriding
     @classmethod
-    def from_coeffs(cls, p: Sequence[Number], q: Sequence[Number], var: Symbol = x, ascending: bool = True) -> 'Rational':
+    def from_coeffs(cls, p: Sequence[Number], q: Sequence[Number], var: Symbol = x, ascending: bool = True, **kwargs) -> 'Rational':
         if not p or not q:
             raise ValueError('At least one coeff must be provided for both p and q')
         if not ascending:
             p, q = p[::-1], q[::-1]  # Reverse for highest-first
-        return cls(Add(*[c*var**i for i, c in enumerate(p)]) / Add(*[c*var**i for i, c in enumerate(q)]))
+        return cls(Add(*[c*var**i for i, c in enumerate(p)]) / Add(*[c*var**i for i, c in enumerate(q)]), **kwargs)
 
 
 # Aliases:
@@ -690,4 +702,4 @@ class Function(Expression):
 if __name__ == '__main__':
     from sympy.abc import x, z
     f = Rational.from_coeffs([1, 2], [3, 4, 5])
-    print(f)
+    print(f.on_self_mutated.callables)
