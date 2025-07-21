@@ -1,0 +1,13 @@
+1. Make sure to update the 'version' the pyproject.toml.
+2. Follow these steps to package and upload:
+https://packaging.python.org/en/latest/tutorials/packaging-projects/#generating-distribution-archives
+and
+https://twine.readthedocs.io/en/latest/
+
+Quick Commands:
+`conda activate math`
+`cd C:\local\repos\MathFlow`  # cd into the dir with pyproject.toml
+`python -m pip install --upgrade build`
+`python -m build`
+`python -m pip install --upgrade twine`
+`twine upload dist/*`
