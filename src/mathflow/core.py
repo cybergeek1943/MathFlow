@@ -355,7 +355,7 @@ else:
 class PrintProxy(_BasePrintProxy):
     """OO Interface for string rendering of expressions."""
     __slots__ = 'expr', 'default_method', 'default_args', 'repr_same_as_str'
-    method_types = Literal['normal', 'pretty', 'latex', 'mathml', 'mathematica_code', 'ccode', 'cxxcode', 'rcode', 'fcode', 'smtlib_code', 'maple_code', 'jscode', 'julia_code', 'octave_code', 'rust_code', 'pycode', 'tree'] | str
+    method_types = Literal['normal', 'evalf', 'N', 'n', 'pretty', 'latex', 'mathml', 'mathematica_code', 'ccode', 'cxxcode', 'rcode', 'fcode', 'smtlib_code', 'maple_code', 'jscode', 'julia_code', 'octave_code', 'rust_code', 'pycode', 'tree'] | str
 
     def __init__(self, expr: SympyExpr) -> None:
         self.expr: SympyExpr = expr
@@ -375,7 +375,7 @@ class PrintProxy(_BasePrintProxy):
         return str(self) if self.repr_same_as_str else repr(self.expr)
 
     def __call__(self, method: 'PrintProxy.method_types' = None, *args, **kwargs) -> None:
-        if method is None:
+        if method is None or method == 'normal':
             print(self)
             return
         print(getattr(self, method)(*args, **kwargs))
@@ -701,5 +701,7 @@ class Function(Expression):
 
 if __name__ == '__main__':
     from sympy.abc import x, z
-    f = Rational.from_coeffs([1, 2], [3, 4, 5])
-    print(f.on_self_mutated.callables)
+    # f = Rational.from_coeffs([1, 2], [3, 4, 5])
+    # print(f.on_self_mutated.callables)
+    e = Expression('e^0.5')
+    print(e.print('N'))

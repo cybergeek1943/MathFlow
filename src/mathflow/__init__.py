@@ -95,6 +95,7 @@ Useful Sympy Functions
 - from sympy.abc import x, y, x
 - x1, x2 = symbols('x1 x2')
 - Basic.free_symbols  # property gives us the free symbols of an expression
+- Expr.evalf() or N()... useful to print decimals with variable precision.
 """
 from mathflow.core import Expression, Polynomial, Rational, Function
 from sympy import abc

@@ -18,10 +18,11 @@ from sympy.printing import (
     python
 )
 from sympy.printing.tree import tree
-
+from sympy import N
 
 # Define Aliases Here
-pass
+evalf = N
+n = N
 
 
 # Getter Functionality
