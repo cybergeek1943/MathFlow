@@ -165,6 +165,7 @@ class BaseExpression(_BaseExpression):
         return n
 
     # Now delegate everything to expr which has full sympy functionality
+    # noinspection PyUnboundLocalVariable
     def __getattr__(self, name: str) -> Union[Self, 'BaseExpression'] | Any:
         try:
             attr: Any = getattr(self.expr, name)
@@ -176,7 +177,8 @@ class BaseExpression(_BaseExpression):
                 elif self.expr.is_Poly and hasattr(Expr, name):
                     self.expr: Expr = self.expr.as_expr()
                     attr: Any = getattr(self.expr, name)
-            raise
+            else:
+                raise
 
         if self.operative_closure and callable(attr):
             def wrapper(*args, **kwargs) -> Any:

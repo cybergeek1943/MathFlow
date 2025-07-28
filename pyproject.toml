@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mathflow"
-version = "0.1.3"
+version = "0.1.4"
 description = "A Pythonic Interface for Symbolic and Numerical Mathematics"
 readme = "README.md"
 license = 'MIT'
