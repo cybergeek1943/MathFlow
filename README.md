@@ -18,7 +18,7 @@ pip install mathflow
 
 ## ✨ Key Features
   
-- **🔒 Operative Closure**: Mathematical operations return new Expression objects by default, maintaining functional programming principles  
+- **🔒 Operative Closure**: Mathematical operations return new Expression objects by default
 - **⚡ Mutability Control**: Choose between immutable (default) and mutable expressions for different workflows  
 - **🔗 Seamless Numerical Integration**: Every symbolic expression has a `.n` attribute providing numerical methods without manual lambdification (uses cached lambdified expression when needed)
 - **🎨 Enhanced Printing**: Flexible output formatting through the `.print` attribute (LaTeX, pretty printing, code generation)  
@@ -287,7 +287,7 @@ MathFlow follows several key principles:
 
 1. **Intuitive API**: Mathematical operations should feel natural in Python, providing an "exploratory" experience
 2. **Performance**: Automatic optimizations (Horner's method, efficient algorithms, automatic numerical computing when needed)  
-3. **Flexibility**: Support both functional and imperative programming styles  
+3. **Flexibility**: Support both functional and OOP programming styles  
 4. **Extensibility**: Easy integration with other mathematical libraries  
 5. **Type Safety**: Comprehensive type and method hints for full IDE support
 
