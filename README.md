@@ -294,6 +294,7 @@ MathFlow follows several key principles:
 
 ## 🚀 Next Steps & Our Vision
 
+- Provide a way to set configurations and defaults
 - Provide a better testing suite to ensure all edge cases are taken care of
 - Integrate AI by introducing an `.ai()` method that calls a local instance of [MathΣtral](https://mistral.ai/news/mathstral) and [Project Numina](https://projectnumina.ai/) models over ollama. It would be given context of both the expressions structure and its mathematical properties. One could also use it construct expressions using natural language.
 
