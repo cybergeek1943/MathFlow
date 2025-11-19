@@ -1,6 +1,6 @@
 <img width="1278" height="342" alt="logo" src="https://github.com/user-attachments/assets/cc90652f-ff4d-4840-a43f-8cbb6b0fca83" />
 
-# MathFlow 🧮
+# MathFlow
 **A Pythonic Interface for Symbolic and Numerical Mathematics**
 
 MathFlow bridges the gap between symbolic mathematics (SymPy) and numerical computations (NumPy/SciPy), offering a unified interface that maintains mathematical rigor while providing practical tools for real-world problems.  
@@ -16,7 +16,7 @@ pip install mathflow
 **Have Questions? Take a look at the Q&A:**
 [Questions & Answers: Addressing Potential Concerns](docs/QA.md)
 
-## ✨ Key Features
+## Key Features
   
 - **🔒 Operative Closure**: Mathematical operations return new Expression objects by default
 - **⚡ Mutability Control**: Choose between immutable (default) and mutable expressions for different workflows  
@@ -29,7 +29,7 @@ pip install mathflow
 - **🔍 Exploratory**: Full IDE support, enabling easy tool finding and minimizing the learning curve.
 
 
-## 🚀 Quick Start
+## Quick Start
 
 ```python
 from mathflow import Expression, Polynomial, Rational
@@ -60,7 +60,7 @@ print(f.print.ccode())    # c code output
 ```  
 
 
-## 🎯 Numerical Computing
+## Numerical Computing
 
 MathFlow excels at bridging symbolic and numerical mathematics:  
 ```python
@@ -79,7 +79,7 @@ minimum = f.n.minimize(bounds=[(-2, 2)])
 ```
 
 
-## 📚 Core Classes
+## Core Classes
 
 ```mermaid
 graph BT
@@ -281,7 +281,7 @@ Step 9. `h` may be substituted for the original (x-c), and then expanded. `c` is
 ```
 
 
-## 🏗️ Design Philosophy  
+## Design Philosophy  
   
 MathFlow follows several key principles:
 
@@ -292,7 +292,7 @@ MathFlow follows several key principles:
 5. **Type Safety**: Comprehensive type and method hints for full IDE support
 
 
-## 🚀 Next Steps & Our Vision
+## Next Steps & Our Vision
 
 - Provide a way to set configurations and defaults
 - Provide a better testing suite to ensure all edge cases are taken care of
@@ -310,12 +310,12 @@ AI Integration Example
 ```
 
 
-## 🤝 Contributing  
+## Contributing  
 
 We welcome contributions! Soon, we will publish a list of documents covering contribution guidelines here. Come back later if you are interested in contributing!
 
 
-## 📋 Dependencies  
+## Dependencies  
 
 - **SymPy**: Symbolic mathematics engine  
 	- **mpmath**: High-precision arithmetic
@@ -324,12 +324,12 @@ We welcome contributions! Soon, we will publish a list of documents covering con
 - **tabulate**: Pretty table printing (for verbose modes)  
 
 
-## 📄 License (MIT)
+## License (MIT)
 
 This project is licensed under the MIT License - see the LICENSE file for details.  
 
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built on the excellent [SymPy](https://www.sympy.org/) symbolic mathematics library  
 - Numerical computing powered by [NumPy](https://numpy.org/) and [SciPy](https://scipy.org/)  
