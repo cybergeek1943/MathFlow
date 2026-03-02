@@ -18,15 +18,15 @@ pip install mathflow
 
 ## Key Features
   
-- **🔒 Operative Closure**: Mathematical operations return new Expression objects by default
-- **⚡ Mutability Control**: Choose between immutable (default) and mutable expressions for different workflows  
-- **🔗 Seamless Numerical Integration**: Every symbolic expression has a `.n` attribute providing numerical methods without manual lambdification (uses cached lambdified expression when needed)
-- **🎨 Enhanced Printing**: Flexible output formatting through the `.print` attribute (LaTeX, pretty printing, code generation)  
-- **📡 Signal System**: Qt-like signals for tracking expression mutations and clones, enabling reactive programming  
-- **🔄 Automatic Type Conversions**: Seamlessly and automatically converts between internal Poly and Expr representations based on context
-- **📦 Lightweight**: ~0.5 MB itself, ~100 MB including dependencies
-- **🧩 Fully backward compatible**: Seamlessly integrate SymPy and MathFlow in the same script. All methods that work on SymPy Expr or Poly objects work on MathFlow objects
-- **🔍 Exploratory**: Full IDE support, enabling easy tool finding and minimizing the learning curve.
+- **Operative Closure**: Mathematical operations return new Expression objects by default
+- **Mutability Control**: Choose between immutable (default) and mutable expressions for different workflows  
+- **Seamless Numerical Integration**: Every symbolic expression has a `.n` attribute providing numerical methods without manual lambdification (uses cached lambdified expression when needed)
+- **Enhanced Printing**: Flexible output formatting through the `.print` attribute (LaTeX, pretty printing, code generation)  
+- **Signal System**: Qt-like signals for tracking expression mutations and clones, enabling reactive programming  
+- **Automatic Type Conversions**: Seamlessly and automatically converts between internal Poly and Expr representations based on context
+- **Lightweight**: ~0.5 MB itself, ~100 MB including dependencies
+- **Fully backward compatible**: Seamlessly integrate SymPy and MathFlow in the same script. All methods that work on SymPy Expr or Poly objects work on MathFlow objects
+- **Exploratory**: Full IDE support, enabling easy tool finding and minimizing the learning curve.
 
 
 ## Quick Start
@@ -160,7 +160,7 @@ pf = rational.partial_fractions(x)
 ```  
 
 
-## 🔧 Advanced Features
+## Advanced Features
 ### Mutability Control  
   
 ```python
